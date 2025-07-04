@@ -75,3 +75,7 @@ hardware_store/
 ├── config/           # Configuración general del proyecto
 ├── manage.py         # Comando principal de Django
 ├── README.md         # Este archivo
+
+Video de la presentacion
+
+rodrigoferreira.mkv
