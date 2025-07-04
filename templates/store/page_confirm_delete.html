@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="confirmacion-eliminar">
+    <h1 class="titulo-detalle">Eliminar Página</h1>
+    <p class="mensaje-eliminar">¿Estás seguro de que deseas eliminar <strong>"{{ page.title }}"</strong>?</p>
+
+    <form method="post" class="formulario-eliminar">
+        {% csrf_token %}
+        <button type="submit" class="btn-rojo">🗑️ Sí, eliminar</button>
+        <a href="{% url 'store:page_detail' page.pk %}" class="btn-secundario">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

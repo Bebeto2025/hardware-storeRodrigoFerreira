@@ -1,0 +1,292 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000; /* Fondo negro */
+    margin: 0;
+    padding: 20px;
+    color: #eee; /* Texto claro */
+    min-height: 100vh;
+}
+
+/* Títulos */
+h1, h2, h4 {
+    color: #f1c40f; /* Dorado */
+    text-shadow: 0 0 5px #2980b9, 0 0 10px #f1c40f;
+}
+
+/* Degradado para el nombre Hardware Store */
+h1.site-title {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #f1c40f, #2980b9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+/* Links */
+a {
+    color: #f1c40f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Botones dorados */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f1c40f, #d4af37);
+    color: #111;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(212, 175, 55, 0.6);
+    transition: background 0.4s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d4af37, #b2881f);
+    box-shadow: 0 4px 12px rgba(180, 132, 31, 0.7);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #f7d95e, #d4af37);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.9);
+}
+
+/* Botón rojo para eliminar */
+.btn-rojo {
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(192, 57, 43, 0.7);
+    transition: background-color 0.3s ease;
+}
+
+.btn-rojo:hover {
+    background-color: #e74c3c;
+}
+
+/* Botón secundario para cancelar */
+.btn-secundario {
+    background-color: #444;
+    color: #eee;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(255 255 255 / 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.btn-secundario:hover {
+    background-color: #666;
+}
+
+/* Tarjetas */
+.card {
+    background-color: #121212;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.6);
+    padding: 15px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.8);
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+
+/* Cuerpo de tarjeta */
+.card-body {
+    padding: 15px;
+}
+
+/* Formulario de búsqueda con azul metálico */
+form {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 2px solid #2980b9;
+    background-color: #0a3b6e;
+    color: #eee;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]::placeholder {
+    color: #a0b9d6;
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border-color: #f1c40f;
+    box-shadow: 0 0 8px #f1c40f;
+}
+
+form button {
+    padding: 10px 25px;
+    font-weight: 700;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #2980b9, #1c4f89);
+    color: #eee;
+    box-shadow: 0 3px 10px rgba(41, 128, 185, 0.8);
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #3b9efc, #2a68b9);
+}
+
+/* Mensajes sin páginas */
+.no-pages-message {
+    font-style: italic;
+    color: #777;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 50px;
+    user-select: none;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.navbar {
+    background-color: transparent;
+    padding: 15px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links li a,
+.logout-form button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 8px 12px;
+    color: #f1c40f;
+    background: linear-gradient(to bottom, #fff8dc, #f1c40f); /* contorno claro + oro intenso */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        1px 1px 2px rgba(255, 255, 255, 0.3),
+        0 0 6px rgba(241, 196, 15, 0.6);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.nav-links li a:hover,
+.logout-form button:hover {
+    transform: scale(1.1);
+    text-shadow: 
+        1px 1px 3px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(241, 196, 15, 0.9);
+}
+
+/* Alineación para el botón de logout */
+.logout-form {
+    display: inline;
+}
+.logout-form button {
+    font-family: inherit;
+}
+
+/* Avatar preview con borde circular y sombra dorada */
+.avatar-preview {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.8); /* Sombra dorada */
+    object-fit: cover;
+}
+
+/* Separación vertical entre grupos de formulario */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Margen superior para botones */
+.mt-3 {
+    margin-top: 1rem;
+}
+
+/* Margen izquierdo para botones secundarios */
+.ml-2 {
+    margin-left: 0.5rem;
+}
+
+/* Inputs y textarea para avatar, bio y birthdate */
+form input[type="file"],
+form textarea,
+form input[type="date"] {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 2px solid #2980b9;
+    background-color: #0a3b6e;
+    color: #eee;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+form input[type="file"]:focus,
+form textarea:focus,
+form input[type="date"]:focus {
+    outline: none;
+    border-color: #f1c40f;
+    box-shadow: 0 0 8px #f1c40f;
+}

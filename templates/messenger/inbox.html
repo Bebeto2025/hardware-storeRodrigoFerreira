@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Bandeja de entrada{% endblock %}
+
+{% block content %}
+<h1>Bandeja de entrada</h1>
+
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li style="{% if not message.read %}font-weight: bold;{% endif %}">
+                <strong>De:</strong> {{ message.sender.username }} <br>
+                <strong>Fecha:</strong> {{ message.created_at|date:"d/m/Y H:i" }} <br>
+                <p>{{ message.content }}</p>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes mensajes.</p>
+{% endif %}
+
+<a href="{% url 'messenger:send_message' %}" class="btn btn-primary">Enviar mensaje</a>
+{% endblock %}

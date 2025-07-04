@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="detalle-pagina">
+    <h1 class="titulo-detalle">{{ page.title }}</h1>
+    <h3 class="subtitulo-detalle">{{ page.subtitle }}</h3>
+
+    <img src="{{ page.image.url }}" alt="{{ page.title }}" class="imagen-detalle">
+
+    <div class="contenido-detalle">
+        {{ page.content|safe }}
+    </div>
+
+    <div class="acciones-detalle">
+        {% if user.is_authenticated %}
+            <a href="{% url 'store:page_update' page.pk %}" class="btn-dorado">Editar</a>
+            <a href="{% url 'store:page_delete' page.pk %}" class="btn-rojo">Eliminar</a>
+        {% endif %}
+        <a href="{% url 'store:page_list' %}" class="btn-secundario">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}

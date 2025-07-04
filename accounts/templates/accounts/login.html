@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<h2>Iniciar sesión</h2>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    <label for="id_username">Usuario:</label><br>
+    <input type="text" id="id_username" name="username" required autofocus><br><br>
+
+    <label for="id_password">Contraseña:</label><br>
+    <input type="password" id="id_password" name="password" required><br><br>
+
+    <button type="submit">Entrar</button>
+</form>
+
+<p>¿No tienes cuenta? <a href="{% url 'accounts:signup' %}">Regístrate aquí</a></p>
+
+<p><a href="{% url 'accounts:password_change' %}">¿Olvidaste tu contraseña?</a></p>
+{% endblock %}

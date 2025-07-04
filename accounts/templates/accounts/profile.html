@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<h2>Perfil de usuario</h2>
+
+<p><strong>Usuario:</strong> {{ user.username|escape }}</p>
+<p><strong>Email:</strong> {{ user.email|default:"No proporcionado" }}</p>
+
+{% if user.profile.avatar %}
+    <p><strong>Avatar:</strong></p>
+    <img src="{{ user.profile.avatar.url }}" alt="Avatar de {{ user.username }}" class="avatar-preview">
+{% else %}
+    <p><strong>Avatar:</strong> No disponible</p>
+{% endif %}
+
+<p><strong>Biografía:</strong> {{ user.profile.bio|default:"No proporcionada" }}</p>
+
+{% if user.profile.birthdate %}
+    <p><strong>Fecha de nacimiento:</strong> {{ user.profile.birthdate|date:"d/m/Y" }}</p>
+{% else %}
+    <p><strong>Fecha de nacimiento:</strong> No proporcionada</p>
+{% endif %}
+
+<p><a href="{% url 'accounts:profile_edit' %}">Editar perfil básico</a></p>
+<p><a href="{% url 'accounts:profile_extended_edit' %}">Editar perfil completo</a></p>
+<p><a href="{% url 'accounts:password_change' %}">Cambiar contraseña</a></p>
+<p><a href="{% url 'accounts:logout' %}">Cerrar sesión</a></p>
+{% endblock %}

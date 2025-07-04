@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Editar Perfil Extendido{% endblock %}
+
+{% block content %}
+<h2>Editar Perfil Extendido</h2>
+
+<form method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="form-group">
+        <label for="{{ form.avatar.id_for_label }}">Avatar:</label><br>
+        {% if form.instance.avatar %}
+            <img src="{{ form.instance.avatar.url }}" alt="Avatar actual" class="avatar-preview" />
+            <br>
+        {% endif %}
+        {{ form.avatar.errors }}
+        {{ form.avatar }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.bio.id_for_label }}">Biografía:</label><br>
+        {{ form.bio.errors }}
+        {{ form.bio }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.birthdate.id_for_label }}">Fecha de Nacimiento:</label><br>
+        {{ form.birthdate.errors }}
+        {{ form.birthdate }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
+    <a href="{% url 'accounts:profile' %}" class="btn btn-secundario ml-2">Cancelar</a>
+</form>
+{% endblock %}

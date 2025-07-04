@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<h2>Editar Perfil</h2>
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <label for="{{ form.first_name.id_for_label }}">Nombre:</label><br>
+    {{ form.first_name.errors }}
+    {{ form.first_name }}<br><br>
+
+    <label for="{{ form.last_name.id_for_label }}">Apellido:</label><br>
+    {{ form.last_name.errors }}
+    {{ form.last_name }}<br><br>
+
+    <label for="{{ form.email.id_for_label }}">Email:</label><br>
+    {{ form.email.errors }}
+    {{ form.email }}<br><br>
+
+    <button type="submit">Guardar cambios</button>
+</form>
+
+<p><a href="{% url 'accounts:profile' %}">Volver al perfil</a></p>
+{% endblock %}

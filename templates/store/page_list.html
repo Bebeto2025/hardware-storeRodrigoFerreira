@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Listado de páginas</h1>
+
+<!-- Formulario de búsqueda -->
+<form method="get" action="" style="margin-bottom: 20px;">
+    <input type="text" name="q" placeholder="Buscar..." value="{{ q }}" />
+    <button type="submit">Buscar</button>
+</form>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'store:page_create' %}" class="btn btn-primary">Crear nueva página</a>
+{% endif %}
+
+<hr>
+
+{% if no_pages %}
+    <p>{{ no_pages }}</p>
+{% else %}
+    {% if q %}
+        <p>Resultados para: <strong>"{{ q }}"</strong></p>
+    {% endif %}
+    {% for page in pages %}
+        <div class="card mb-3">
+            {% if page.image %}
+                <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}" style="max-height: 300px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+                <h2>{{ page.title }}</h2>
+                <h4>{{ page.subtitle }}</h4>
+                <p><a href="{% url 'store:page_detail' page.pk %}">Leer más</a></p>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

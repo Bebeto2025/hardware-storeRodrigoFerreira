@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Hardware Store{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+    <header>
+        <!-- 🔷 Barra de navegación personalizada -->
+        <nav class="navbar" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="{% url 'core:home' %}">Inicio</a></li>
+                <li><a href="{% url 'core:about' %}">Acerca de</a></li>
+                <li><a href="{% url 'store:page_list' %}">Páginas</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'messenger:inbox' %}">Mensajes</a></li>
+                    <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
+                    <li>
+                        <form method="post" action="{% url 'accounts:logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <!-- 🔷 Título destacado del sitio -->
+        <h1 class="site-title">Hardware Store</h1>
+    </header>
+
+    <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hardware Store - Tecnología accesible para todos</p>
+    </footer>
+</body>
+</html>
