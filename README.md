@@ -79,3 +79,7 @@ hardware_store/
 Video de la presentacion
 
 rodrigoferreira.mkv
+
+Link video drive
+
+https://drive.google.com/file/d/1taT-GgLnu4-oDBLatRLLiDUmDulAsvde/view?usp=drive_link 
